@@ -178,8 +178,12 @@ Fonts: **Inter** (body), **Playfair Display** (display).
 ## Credits
 
 - UI design reference: [Figma Community Template](https://www.figma.com/design/xDaKvYOYYOUFfM1hgbcYeG/Interior-Design-Website-UI-Template--Community-)
-- Developed by **JINX**
+- Developed By **JINX**
 
 ## License
 
 Private project. All rights reserved © Build Art.
+
+---
+
+**Developed By JINX**
