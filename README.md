@@ -1,23 +1,110 @@
 # Build Art
 
-A modern interior design marketing website built with React, TypeScript, and Tailwind CSS. The UI is based on the [Interior Design Website UI Template (Community)](https://www.figma.com/design/xDaKvYOYYOUFfM1hgbcYeG/Interior-Design-Website-UI-Template--Community-) Figma file.
+**Build Art** is a full-service interior design and fit-out company that provides end-to-end solutions — from concept development and design, through 3D visualization, to execution, project management, and final delivery.
 
-## Features
+This repository contains the marketing website for Build Art, built to generate qualified leads and convert visitors into design and execution contracts.
 
-- Responsive single-page layout (mobile through desktop)
+## Vision
+
+To become the first choice for individuals and businesses seeking exceptional design solutions and professional execution that combine aesthetics, functionality, and quality.
+
+## Mission
+
+Transforming ideas and spaces into inspiring experiences through thoughtful design, precise execution, and outstanding client service at every stage of the project.
+
+## Core Services
+
+- Interior Design
+- Space Planning
+- 3D Visualization & Rendering
+- Fit-Out & Turnkey Solutions
+- Residential Projects
+- Commercial Projects
+- Project Management
+- Furniture & Material Selection
+- Bank Installment Solutions
+
+## Target Audience
+
+**Primary audience:** new homeowners, newly engaged and married couples, villa owners, real estate investors, clinic owners, office owners, and retail store / café owners.
+
+| Segment | Profile |
+|---------|---------|
+| Age range | 25–50 years old |
+| Income level | Upper-middle to high-income individuals |
+
+### Customer Pain Points
+
+- Difficulty visualizing the final outcome before execution
+- Concerns about execution quality
+- Managing multiple contractors and suppliers
+- Lack of budget transparency
+- Project delays
+- Difficulty paying the full project cost upfront
+
+## Unique Selling Proposition
+
+- End-to-end design and execution under one roof
+- Realistic 3D visualizations before execution
+- Complete project management from concept to completion
+- High-quality craftsmanship and attention to detail
+- Commitment to timelines and execution plans
+- Flexible bank installment solutions
+- Customized design solutions tailored to different needs and budgets
+
+## Brand Identity
+
+### Personality
+
+Professional · Sophisticated · Trustworthy · Modern · Detail-Oriented · Practical
+
+### Values
+
+Quality · Transparency · Commitment · Creativity · Client Satisfaction
+
+### Tone of Voice
+
+Professional yet approachable · Confident without being overly promotional · Elegant and refined · Clear and direct · Solution-driven and results-oriented
+
+## Main Business Goal
+
+Generate qualified leads and convert them into design and execution contracts by building trust, showcasing project quality, and making the decision-making process easier through flexible bank installment solutions.
+
+---
+
+## Website Overview
+
+A responsive single-page marketing site implemented in React and TypeScript. The UI layout is based on the [Interior Design Website UI Template (Community)](https://www.figma.com/design/xDaKvYOYYOUFfM1hgbcYeG/Interior-Design-Website-UI-Template--Community-) Figma file, adapted for the Build Art brand.
+
+### Features
+
+- Responsive layout (mobile through desktop)
 - Fixed navigation with mobile menu
-- Hero section with stats and layered imagery
-- Services, dream/accordion, steps, and testimonials sections
+- Hero with animated stats and layered imagery
+- Services, process, and testimonials sections
 - Testimonial carousel with card-by-card sliding
-- Newsletter CTA that bridges into the footer
-- Dark footer with links, contact info, and social icons
+- Newsletter CTA bridging into the footer
+- Footer with links, contact info, and social icons
+
+### Page Sections
+
+| Section | Component | Purpose |
+|---------|-----------|---------|
+| Navigation | `Navbar` | Logo, links, Sign Up CTA |
+| Hero | `Hero` | Brand intro, CTA, key stats |
+| Services | `Services` | Core service highlights |
+| Dream | `DreamSection` | Design expertise showcase |
+| Steps | `StepsSection` | Project process overview |
+| Testimonials | `TestimonialsSection` | Client trust & social proof |
+| Newsletter | `NewsletterSection` | Lead capture (`#contact`) |
+| Footer | `Footer` | Links, contact, support (`#support`) |
 
 ## Tech Stack
 
 - **React 18** + **TypeScript**
 - **Vite** — dev server and build tooling
 - **Tailwind CSS** — styling and design tokens
-- **Framer Motion** — animations (navbar, testimonials)
+- **Framer Motion** — animations
 - **Lucide React** — icons
 
 ## Getting Started
@@ -66,16 +153,8 @@ npm run lint        # ESLint
 Build_Art/
 ├── assets/imgs/          # Shared images
 ├── src/
-│   ├── assets/           # Component-level assets (logo, icons, images)
-│   ├── components/
-│   │   ├── Navbar.tsx
-│   │   ├── Hero.tsx
-│   │   ├── Services.tsx
-│   │   ├── DreamSection.tsx
-│   │   ├── StepsSection.tsx
-│   │   ├── TestimonialsSection.tsx
-│   │   ├── NewsletterSection.tsx
-│   │   └── Footer.tsx
+│   ├── assets/           # Logo, icons, component images
+│   ├── components/       # Page sections
 │   ├── App.tsx
 │   ├── index.css
 │   └── main.tsx
@@ -83,19 +162,6 @@ Build_Art/
 ├── tailwind.config.js
 └── vite.config.ts
 ```
-
-## Page Sections
-
-| Section | Component | Description |
-|---------|-----------|-------------|
-| Navigation | `Navbar` | Logo, links, Sign Up CTA, mobile menu |
-| Hero | `Hero` | Headline, CTA, stats, image collage |
-| Services | `Services` | Three service cards with icons |
-| Dream | `DreamSection` | Image + accordion content |
-| Steps | `StepsSection` | Three-step process with image |
-| Testimonials | `TestimonialsSection` | Overlapping cards carousel |
-| Newsletter | `NewsletterSection` | Email signup (`#contact`) |
-| Footer | `Footer` | Links, contact, social (`#support`) |
 
 ## Design Tokens
 
