@@ -1,102 +1,97 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import logo from '../assets/logo.svg';
 
 const navLinks = [
-  { name: 'Services', href: '#services' },
-  { name: 'Portfolio', href: '#portfolio' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '#home', active: true },
+  { name: 'Services', href: '#services', active: false },
+  { name: 'Contact', href: '#contact', active: false },
+  { name: 'Support', href: '#support', active: false },
 ];
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMobileMenuOpen]);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-charcoal/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <a href="#" className="font-display text-2xl text-white">
-            Studio<span className="text-gold">Elegance</span>
-          </a>
+    <header className="fixed inset-x-0 top-0 z-50 bg-white">
+      <nav className="site-container relative flex items-center py-4 lg:py-5">
+        <a href="#home" className="relative z-10 shrink-0" aria-label="Home">
+          <img src={logo} alt="" className="h-10 w-auto lg:h-12 lg:w-[177px]" />
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="font-body text-white/80 hover:text-gold transition-colors duration-300 text-sm tracking-wider uppercase"
-              >
-                {link.name}
-              </a>
-            ))}
+        <div className="absolute inset-x-0 hidden items-center justify-center gap-10 xl:gap-[60px] lg:flex">
+          {navLinks.map((link) => (
             <a
-              href="#contact"
-              className="px-6 py-2.5 bg-gold text-charcoal font-body font-medium text-sm tracking-wider uppercase hover:bg-gold/90 transition-all duration-300"
+              key={link.name}
+              href={link.href}
+              className={`font-body text-[22px] font-semibold leading-normal transition-colors duration-200 ${
+                link.active ? 'text-nav-dark' : 'text-nav-muted hover:text-nav-dark'
+              }`}
             >
-              Get Started
+              {link.name}
             </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white p-2"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          ))}
         </div>
 
-        {/* Mobile Menu */}
+        <a
+          href="#signup"
+          className="relative z-10 ml-auto hidden h-12 w-[176px] shrink-0 items-center justify-center rounded-[4px] bg-nav-dark font-body text-[20px] font-semibold text-white transition-colors duration-200 hover:bg-nav-dark/90 lg:flex"
+        >
+          Sign Up
+        </a>
+
+        <button
+          type="button"
+          aria-expanded={isMobileMenuOpen}
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+          className="relative z-10 ml-auto p-2 text-nav-dark lg:hidden"
+        >
+          {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+      </nav>
+
+      <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-charcoal/95 backdrop-blur-md border-t border-white/10"
+            transition={{ duration: 0.25 }}
+            className="overflow-hidden border-t border-nav-dark/10 bg-white lg:hidden"
           >
-            <div className="py-6 space-y-4">
+            <div className="space-y-1 px-6 py-4">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block font-body text-white/80 hover:text-gold transition-colors duration-300 text-sm tracking-wider uppercase px-4 py-2"
+                  className={`block py-3 font-body text-lg font-semibold ${
+                    link.active ? 'text-nav-dark' : 'text-nav-muted'
+                  }`}
                 >
                   {link.name}
                 </a>
               ))}
-              <div className="px-4 pt-4">
-                <a
-                  href="#contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-center px-6 py-3 bg-gold text-charcoal font-body font-medium text-sm tracking-wider uppercase"
-                >
-                  Get Started
-                </a>
-              </div>
+              <a
+                href="#signup"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mt-2 flex h-[60px] w-full items-center justify-center rounded-[4px] bg-nav-dark font-body text-[20px] font-semibold text-white"
+              >
+                Sign Up
+              </a>
             </div>
           </motion.div>
         )}
-      </div>
-    </motion.nav>
+      </AnimatePresence>
+    </header>
   );
 }

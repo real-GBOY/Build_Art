@@ -1,41 +1,120 @@
-import { Instagram, Facebook, Linkedin } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import logo from '../assets/logo.svg';
+
+const serviceLinks = [
+  { label: 'Lighting Design', href: '#services' },
+  { label: 'Interior Design', href: '#services' },
+  { label: 'Outdoor Design', href: '#services' },
+  { label: 'Office Design', href: '#services' },
+];
+
+const quickLinks = [
+  { label: 'About Us', href: '#home' },
+  { label: 'Services', href: '#services' },
+  { label: 'Portfolio', href: '#home' },
+  { label: 'Contact Us', href: '#contact' },
+];
+
+const socialLinks = [
+  { label: 'Facebook', href: '#', icon: Facebook },
+  { label: 'Twitter', href: '#', icon: Twitter },
+  { label: 'Instagram', href: '#', icon: Instagram },
+  { label: 'LinkedIn', href: '#', icon: Linkedin },
+];
 
 export function Footer() {
   return (
-    <footer className="bg-charcoal border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo */}
-          <a href="#" className="font-display text-xl text-white">
-            Studio<span className="text-gold">Elegance</span>
-          </a>
+    <footer id="support" className="relative bg-nav-dark text-white">
+      <div className="site-container pb-16 pt-[calc(2.5rem+28px)] lg:pb-20 lg:pt-[calc(3rem+30px)]">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-16">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <a href="#home" aria-label="Home">
+              <img src={logo} alt="" className="h-10 w-auto brightness-0 invert lg:h-12" />
+            </a>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-6">
-            <a
-              href="#"
-              className="w-10 h-10 bg-white/5 flex items-center justify-center hover:bg-gold/20 transition-colors duration-300"
-            >
-              <Instagram className="w-4 h-4 text-white" />
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 bg-white/5 flex items-center justify-center hover:bg-gold/20 transition-colors duration-300"
-            >
-              <Facebook className="w-4 h-4 text-white" />
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 bg-white/5 flex items-center justify-center hover:bg-gold/20 transition-colors duration-300"
-            >
-              <Linkedin className="w-4 h-4 text-white" />
-            </a>
+            <p className="mt-6 max-w-sm font-body text-sm font-medium leading-[160%] text-white/70 lg:text-base">
+              Step into a world where interior design is meticulously crafted to bring together
+              timeless elegance and cutting-edge modern innovation.
+            </p>
+
+            <div className="mt-8 flex items-center gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors duration-200 hover:border-white hover:bg-white/10"
+                >
+                  <social.icon className="h-4 w-4" strokeWidth={1.5} />
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Copyright */}
-          <p className="font-body text-secondary-500 text-sm">
-            © 2026 Studio Elegance. All rights reserved.
-          </p>
+          <div>
+            <h3 className="font-body text-base font-semibold uppercase tracking-wide text-white lg:text-lg">
+              Our Services
+            </h3>
+            <ul className="mt-6 space-y-4">
+              {serviceLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="font-body text-sm font-medium text-white/70 transition-colors duration-200 hover:text-white lg:text-base"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-body text-base font-semibold uppercase tracking-wide text-white lg:text-lg">
+              Quick Links
+            </h3>
+            <ul className="mt-6 space-y-4">
+              {quickLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="font-body text-sm font-medium text-white/70 transition-colors duration-200 hover:text-white lg:text-base"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-body text-base font-semibold uppercase tracking-wide text-white lg:text-lg">
+              Contact Us
+            </h3>
+            <ul className="mt-6 space-y-4 font-body text-sm font-medium leading-[160%] text-white/70 lg:text-base">
+              <li>123 Design Avenue, Suite 400, New York, NY 10001</li>
+              <li>
+                <a href="tel:+12345678900" className="transition-colors duration-200 hover:text-white">
+                  +1 (234) 567-8900
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:hello@studioelegance.com"
+                  className="transition-colors duration-200 hover:text-white"
+                >
+                  hello@studioelegance.com
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 border-t border-white/10 pt-8 lg:mt-16">
+          <div className="space-y-2 text-center font-body text-sm font-medium text-white/50">
+            <p>© {new Date().getFullYear()} Build Art. All rights reserved.</p>
+            <p>Developed By JINX</p>
+          </div>
         </div>
       </div>
     </footer>

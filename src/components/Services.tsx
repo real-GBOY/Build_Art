@@ -1,79 +1,55 @@
-import { motion } from 'framer-motion';
-import { Paintbrush, Ruler, Lightbulb, Home } from 'lucide-react';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { Lamp, Sofa, TreePine } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
-const services = [
+const services: {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}[] = [
   {
-    icon: Paintbrush,
-    title: 'Residential Design',
+    icon: Lamp,
+    title: 'Lighting Design',
     description:
-      'Transform your home into a personalized sanctuary that reflects your unique style and enhances daily living.',
+      'Achieve the perfect balance of ambient, task, and accent lighting for a warm, inviting atmosphere in every room.',
   },
   {
-    icon: Ruler,
-    title: 'Space Planning',
+    icon: Sofa,
+    title: 'Interior Design',
     description:
-      'Optimize your space with thoughtful layouts that maximize functionality while maintaining aesthetic harmony.',
+      'From concept to completion, we create personalized spaces that reflect your unique style and enhance your daily living.',
   },
   {
-    icon: Lightbulb,
-    title: 'Concept Development',
+    icon: TreePine,
+    title: 'Outdoor Design',
     description:
-      'From initial vision to detailed concepts, we develop comprehensive design strategies tailored to your needs.',
-  },
-  {
-    icon: Home,
-    title: 'Commercial Projects',
-    description:
-      'Create inspiring work environments that boost productivity and leave lasting impressions on clients.',
+      'Transform outdoor areas into functional, beautiful extensions of your home with tailored landscape and patio design.',
   },
 ];
 
 export function Services() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
   return (
-    <section id="services" className="py-24 md:py-32 bg-cream">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-center mb-20"
-        >
-          <span className="text-primary-600 font-body text-sm tracking-[0.3em] uppercase mb-4 block">
-            What We Offer
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-charcoal mb-6">
-            Our Services
-          </h2>
-          <div className="w-24 h-0.5 bg-gold mx-auto" />
-        </motion.div>
+    <section id="services" className="bg-white">
+      <div className="site-container py-16 lg:py-24">
+        <h2 className="mb-12 font-body text-3xl font-medium text-nav-dark lg:mb-20 lg:text-[40px]">
+          <span className="mr-3 text-nav-muted">—</span>
+          Our Services
+        </h2>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 + 0.3, ease: 'easeOut' }}
-              className="group"
-            >
-              <div className="bg-white p-8 h-full hover:shadow-xl transition-all duration-500 border border-primary-100">
-                <div className="mb-6 inline-flex items-center justify-center w-14 h-14 bg-primary-100 group-hover:bg-gold/20 transition-colors duration-300">
-                  <service.icon className="w-6 h-6 text-primary-700 group-hover:text-gold transition-colors duration-300" />
-                </div>
-                <h3 className="font-display text-xl text-charcoal mb-4">{service.title}</h3>
-                <p className="font-body text-secondary-600 leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            </motion.div>
+        <div className="grid gap-12 md:grid-cols-3 lg:gap-16 xl:gap-24">
+          {services.map((service) => (
+            <div key={service.title}>
+              <service.icon
+                className="mb-6 h-10 w-10 text-nav-dark"
+                strokeWidth={1.5}
+                aria-hidden
+              />
+              <h3 className="mb-4 font-body text-xl font-semibold text-nav-dark lg:text-2xl">
+                {service.title}
+              </h3>
+              <p className="font-body text-base font-medium leading-[145%] text-nav-muted lg:text-lg">
+                {service.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>
