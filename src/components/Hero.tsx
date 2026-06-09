@@ -1,12 +1,48 @@
+import { useEffect, useRef, useState } from 'react';
+import { useInView } from 'framer-motion';
 import heroImage1 from '../../assets/imgs/Image 1.jpg';
 import heroImage2 from '../../assets/imgs/Image 2.jpg';
 import arrowDown from '../assets/arrow-down.svg';
 
 const stats = [
-  { value: '400+', label: 'Project Complete' },
-  { value: '600+', label: 'Satisfied Clients' },
-  { value: '100+', label: 'Unique Styles' },
+  { value: 400, label: 'Project Complete' },
+  { value: 600, label: 'Satisfied Clients' },
+  { value: 100, label: 'Unique Styles' },
 ];
+
+function CountUp({ target, duration = 2000 }: { target: number; duration?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let startTime: number | null = null;
+    let frameId = 0;
+
+    const animate = (timestamp: number) => {
+      if (startTime === null) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * target));
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(animate);
+      }
+    };
+
+    frameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frameId);
+  }, [isInView, target, duration]);
+
+  return (
+    <span ref={ref} className="relative inline-block tabular-nums">
+      <span className="invisible">{target}+</span>
+      <span className="absolute inset-0">{count}+</span>
+    </span>
+  );
+}
 
 export function Hero() {
   return (
@@ -35,7 +71,7 @@ export function Hero() {
               {stats.map((stat) => (
                 <div key={stat.label} className="text-nav-muted">
                   <p className="mb-[15px] font-body text-[clamp(2.5rem,5vw,70px)] font-normal leading-[1.755]">
-                    {stat.value}
+                    <CountUp target={stat.value} />
                   </p>
                   <p className="font-body text-lg font-normal leading-[1.755] lg:text-[22px]">
                     {stat.label}
