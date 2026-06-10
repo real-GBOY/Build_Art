@@ -1,5 +1,7 @@
+import { motion } from 'framer-motion';
 import { Lamp, Sofa, TreePine } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { fadeInUp, staggerContainer, viewport } from '../lib/motion';
 
 const services: {
   icon: LucideIcon;
@@ -30,14 +32,26 @@ export function Services() {
   return (
     <section id="services" className="bg-white">
       <div className="site-container py-16 lg:py-24">
-        <h2 className="mb-12 font-body text-3xl font-medium text-nav-dark lg:mb-20 lg:text-[40px]">
+        <motion.h2
+          className="mb-12 font-body text-3xl font-medium text-nav-dark lg:mb-20 lg:text-[40px]"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <span className="mr-3 text-nav-muted">—</span>
           Our Services
-        </h2>
+        </motion.h2>
 
-        <div className="grid gap-12 md:grid-cols-3 lg:gap-16 xl:gap-24">
+        <motion.div
+          className="grid gap-12 md:grid-cols-3 lg:gap-16 xl:gap-24"
+          variants={staggerContainer(0.15)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           {services.map((service) => (
-            <div key={service.title}>
+            <motion.div key={service.title} variants={fadeInUp}>
               <service.icon
                 className="mb-6 h-10 w-10 text-nav-dark"
                 strokeWidth={1.5}
@@ -49,9 +63,9 @@ export function Services() {
               <p className="font-body text-base font-medium leading-[145%] text-nav-muted lg:text-lg">
                 {service.description}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

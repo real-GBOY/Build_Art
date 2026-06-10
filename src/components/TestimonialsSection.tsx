@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import sectionImage from '../../assets/imgs/Image 1.jpg';
+import { fadeInUp, slideInLeft, staggerContainer, viewport } from '../lib/motion';
 
 const testimonials = [
   {
@@ -108,7 +109,13 @@ export function TestimonialsSection() {
     <section className="overflow-hidden bg-white">
       <div className="site-container py-16 lg:py-24">
         <div className="relative">
-          <div className="relative z-0 lg:absolute lg:inset-y-0 lg:left-0 lg:w-[42%] lg:pb-[72px]">
+          <motion.div
+            className="relative z-0 lg:absolute lg:inset-y-0 lg:left-0 lg:w-[42%] lg:pb-[72px]"
+            variants={slideInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
             <div className="relative z-0 h-[400px] overflow-hidden rounded-[4px] sm:h-[480px] lg:h-full">
               <img
                 src={sectionImage}
@@ -116,9 +123,15 @@ export function TestimonialsSection() {
                 className="h-full w-full object-cover"
               />
             </div>
-          </div>
+          </motion.div>
 
-          <div className="relative z-50 mt-6 flex gap-4 lg:absolute lg:bottom-0 lg:left-0">
+          <motion.div
+            className="relative z-50 mt-6 flex gap-4 lg:absolute lg:bottom-0 lg:left-0"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
             <button
               type="button"
               aria-label="Previous testimonial"
@@ -135,16 +148,26 @@ export function TestimonialsSection() {
             >
               <ChevronRight className="h-5 w-5" strokeWidth={1.5} />
             </button>
-          </div>
+          </motion.div>
 
-          <div className="relative z-20 mt-10 lg:mt-0 lg:pl-[32%]">
-            <h2 className="font-body text-[clamp(2rem,3.5vw,56px)] font-medium leading-[1.1] text-nav-dark lg:text-right">
+          <motion.div
+            className="relative z-20 mt-10 lg:mt-0 lg:pl-[32%]"
+            variants={staggerContainer(0.12)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
+            <motion.h2
+              className="font-body text-[clamp(2rem,3.5vw,56px)] font-medium leading-[1.1] text-nav-dark lg:text-right"
+              variants={fadeInUp}
+            >
               What Our Customers Say About Us
-            </h2>
+            </motion.h2>
 
-            <div
+            <motion.div
               ref={viewportRef}
               className="mt-8 overflow-hidden [--carousel-gap:1.5rem] lg:mt-12 lg:[--carousel-gap:2rem]"
+              variants={fadeInUp}
             >
               <motion.div
                 className="flex"
@@ -195,8 +218,8 @@ export function TestimonialsSection() {
                   </article>
                 ))}
               </motion.div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

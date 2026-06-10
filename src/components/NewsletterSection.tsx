@@ -1,4 +1,6 @@
 import { FormEvent, useState } from 'react';
+import { motion } from 'framer-motion';
+import { fadeInUp, scaleIn, staggerContainer, viewport } from '../lib/motion';
 
 export function NewsletterSection() {
   const [email, setEmail] = useState('');
@@ -11,19 +13,37 @@ export function NewsletterSection() {
   return (
     <section id="contact" className="relative bg-cream">
       <div className="site-container py-16 pb-10 lg:py-24 lg:pb-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-body text-[clamp(1.75rem,4vw,48px)] font-medium leading-[1.15] text-nav-dark">
+        <motion.div
+          className="mx-auto max-w-3xl text-center"
+          variants={staggerContainer(0.12)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
+          <motion.h2
+            className="font-body text-[clamp(1.75rem,4vw,48px)] font-medium leading-[1.15] text-nav-dark"
+            variants={fadeInUp}
+          >
             Subscribe to Our Newsletter for Design Insights
-          </h2>
+          </motion.h2>
 
-          <p className="mt-6 font-body text-base font-medium leading-[145%] text-nav-muted lg:mt-8 lg:text-lg">
+          <motion.p
+            className="mt-6 font-body text-base font-medium leading-[145%] text-nav-muted lg:mt-8 lg:text-lg"
+            variants={fadeInUp}
+          >
             Be the first to discover trends, inspirations, and special offers as we bring the
             world of design directly to your inbox.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 z-30 translate-y-1/2">
+      <motion.div
+        className="absolute inset-x-0 bottom-0 z-30 translate-y-1/2"
+        variants={scaleIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewport}
+      >
         <div className="site-container">
           <form
             onSubmit={handleSubmit}
@@ -46,7 +66,7 @@ export function NewsletterSection() {
             </button>
           </form>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

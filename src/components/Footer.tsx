@@ -1,5 +1,7 @@
+import { motion } from 'framer-motion';
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import logo from '../assets/logo.svg';
+import { fadeInUp, staggerContainer, viewport } from '../lib/motion';
 
 const serviceLinks = [
   { label: 'Lighting Design', href: '#services' },
@@ -26,8 +28,14 @@ export function Footer() {
   return (
     <footer id="support" className="relative bg-nav-dark text-white">
       <div className="site-container pb-16 pt-[calc(2.5rem+28px)] lg:pb-20 lg:pt-[calc(3rem+30px)]">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-16">
-          <div className="sm:col-span-2 lg:col-span-1">
+        <motion.div
+          className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-16"
+          variants={staggerContainer(0.1)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
+          <motion.div className="sm:col-span-2 lg:col-span-1" variants={fadeInUp}>
             <a href="#home" aria-label="Home">
               <img src={logo} alt="" className="h-10 w-auto brightness-0 invert lg:h-12" />
             </a>
@@ -49,9 +57,9 @@ export function Footer() {
                 </a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={fadeInUp}>
             <h3 className="font-body text-base font-semibold uppercase tracking-wide text-white lg:text-lg">
               Our Services
             </h3>
@@ -67,9 +75,9 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={fadeInUp}>
             <h3 className="font-body text-base font-semibold uppercase tracking-wide text-white lg:text-lg">
               Quick Links
             </h3>
@@ -85,9 +93,9 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={fadeInUp}>
             <h3 className="font-body text-base font-semibold uppercase tracking-wide text-white lg:text-lg">
               Contact Us
             </h3>
@@ -107,15 +115,21 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="mt-12 border-t border-white/10 pt-8 lg:mt-16">
+        <motion.div
+          className="mt-12 border-t border-white/10 pt-8 lg:mt-16"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <div className="space-y-2 text-center font-body text-sm font-medium text-white/50">
             <p>© {new Date().getFullYear()} Build Art. All rights reserved.</p>
             <p>Developed By JINX</p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
