@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo.png";
 
 const navLinks = [
 	{ name: "Home", href: "/", active: true },
@@ -24,10 +24,17 @@ export function Navbar() {
 	}, [isMobileMenuOpen]);
 
 	return (
-		<header className='fixed inset-x-0 top-0 z-[100] bg-white'>
-			<nav className='site-container relative flex items-center py-4 lg:py-5'>
-				<Link to='/' className='relative z-10 shrink-0' aria-label='Home'>
-					<img src={logo} alt='' className='h-10 w-auto lg:h-12 lg:w-[177px]' />
+		<header className='fixed inset-x-0 top-0 z-[100] bg-page'>
+			<nav className='site-container relative flex items-center py-3 lg:py-4'>
+				<Link
+					to='/'
+					className='relative z-10 block h-12 w-36 shrink-0 overflow-hidden sm:w-40 lg:h-14 lg:w-48'
+					aria-label='Home'>
+					<img
+						src={logo}
+						alt='Build Art'
+						className='absolute left-1/2 top-1/2 h-[240%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2'
+					/>
 				</Link>
 
 				<div className='absolute inset-x-0 hidden items-center justify-center gap-10 xl:gap-[60px] lg:flex'>
@@ -70,7 +77,7 @@ export function Navbar() {
 						animate={{ opacity: 1, height: "auto" }}
 						exit={{ opacity: 0, height: 0 }}
 						transition={{ duration: 0.25 }}
-						className='overflow-hidden border-t border-nav-dark/10 bg-white lg:hidden'>
+						className='overflow-hidden border-t border-nav-dark/10 bg-page lg:hidden'>
 						<div className='space-y-1 px-6 py-4'>
 							{navLinks.map((link) => (
 								<Link

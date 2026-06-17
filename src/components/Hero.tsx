@@ -47,7 +47,7 @@ function CountUp({ target, duration = 2000 }: { target: number; duration?: numbe
 
 export function Hero() {
   return (
-    <section id="home" className="overflow-hidden bg-white">
+    <section id="home" className="overflow-hidden bg-page font-cairo">
       <div className="site-container pb-16 pt-4 lg:pb-20 lg:pt-6">
         <div className="relative lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-start lg:gap-10 xl:gap-16 2xl:gap-24">
           <motion.div
@@ -57,14 +57,14 @@ export function Hero() {
             animate="visible"
           >
             <motion.h1
-              className="font-body text-[clamp(3rem,7vw,133px)] font-medium leading-none text-nav-dark"
+              className="text-[clamp(3rem,7vw,133px)] font-medium leading-none text-nav-dark"
               variants={fadeInUp}
             >
               Interior Design
             </motion.h1>
 
             <motion.p
-              className="mt-8 max-w-3xl font-body text-xl font-medium leading-[145%] text-nav-muted lg:mt-[42px] lg:text-2xl xl:max-w-4xl"
+              className="mt-8 max-w-3xl text-xl font-medium leading-[145%] text-nav-muted lg:mt-[42px] lg:text-2xl xl:max-w-4xl"
               variants={fadeInUp}
             >
               Step into a world where the art of Interior Design is meticulously crafted to bring
@@ -78,10 +78,10 @@ export function Hero() {
             >
               {stats.map((stat) => (
                 <motion.div key={stat.label} className="text-nav-muted" variants={fadeInUp}>
-                  <p className="mb-[15px] font-body text-[clamp(2.5rem,5vw,70px)] font-normal leading-[1.755]">
+                  <p className="mb-[15px] text-[clamp(2.5rem,5vw,70px)] font-normal leading-[1.755]">
                     <CountUp target={stat.value} />
                   </p>
-                  <p className="whitespace-nowrap font-body text-lg font-normal leading-[1.755] lg:text-[22px]">
+                  <p className="whitespace-nowrap text-lg font-normal leading-[1.755] lg:text-[22px]">
                     {stat.label}
                   </p>
                 </motion.div>

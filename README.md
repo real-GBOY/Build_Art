@@ -167,7 +167,7 @@ Build_Art/
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `nav-dark` | `#1f1f1f` | Buttons, footer, dark UI |
+| `nav-dark` | `#42d426` | Buttons, footer, dark UI |
 | `nav-muted` | `#545454` | Secondary text |
 | `cream` | `#faf8f5` | Newsletter background |
 | `charcoal` | `#2c2c2c` | Body text |

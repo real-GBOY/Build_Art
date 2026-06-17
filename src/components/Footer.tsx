@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
-import logo from '../assets/logo.svg';
+import footerLogo from '../assets/logo-footer.png';
 import { fadeInUp, staggerContainer, viewport } from '../lib/motion';
 
 const serviceLinks = [
@@ -37,8 +37,12 @@ export function Footer() {
           viewport={viewport}
         >
           <motion.div className="sm:col-span-2 lg:col-span-1" variants={fadeInUp}>
-            <Link to="/" aria-label="Home">
-              <img src={logo} alt="" className="h-10 w-auto brightness-0 invert lg:h-12" />
+            <Link to="/" aria-label="Home" className="relative block h-12 w-36 overflow-hidden sm:w-40 lg:h-14 lg:w-48">
+              <img
+                src={footerLogo}
+                alt="Build Art"
+                className="absolute left-1/2 top-1/2 h-[240%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2"
+              />
             </Link>
 
             <p className="mt-6 max-w-sm font-body text-sm font-medium leading-[160%] text-white/70 lg:text-base">
