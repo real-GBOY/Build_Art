@@ -1,20 +1,21 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import logo from '../assets/logo.svg';
 import { fadeInUp, staggerContainer, viewport } from '../lib/motion';
 
 const serviceLinks = [
-  { label: 'Lighting Design', href: '#services' },
-  { label: 'Interior Design', href: '#services' },
-  { label: 'Outdoor Design', href: '#services' },
-  { label: 'Office Design', href: '#services' },
+  { label: 'Lighting Design', href: '/#services' },
+  { label: 'Interior Design', href: '/#services' },
+  { label: 'Outdoor Design', href: '/#services' },
+  { label: 'Office Design', href: '/#services' },
 ];
 
 const quickLinks = [
-  { label: 'About Us', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#home' },
-  { label: 'Contact Us', href: '#contact' },
+  { label: 'About Us', href: '/' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Portfolio', href: '/' },
+  { label: 'Contact Us', href: '/#contact' },
 ];
 
 const socialLinks = [
@@ -36,9 +37,9 @@ export function Footer() {
           viewport={viewport}
         >
           <motion.div className="sm:col-span-2 lg:col-span-1" variants={fadeInUp}>
-            <a href="#home" aria-label="Home">
+            <Link to="/" aria-label="Home">
               <img src={logo} alt="" className="h-10 w-auto brightness-0 invert lg:h-12" />
-            </a>
+            </Link>
 
             <p className="mt-6 max-w-sm font-body text-sm font-medium leading-[160%] text-white/70 lg:text-base">
               Step into a world where interior design is meticulously crafted to bring together
@@ -66,12 +67,12 @@ export function Footer() {
             <ul className="mt-6 space-y-4">
               {serviceLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="font-body text-sm font-medium text-white/70 transition-colors duration-200 hover:text-white lg:text-base"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -84,12 +85,12 @@ export function Footer() {
             <ul className="mt-6 space-y-4">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="font-body text-sm font-medium text-white/70 transition-colors duration-200 hover:text-white lg:text-base"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
