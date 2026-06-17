@@ -72,16 +72,8 @@ export function Hero() {
               transform your living spaces into the epitome of luxury and sophistication
             </motion.p>
 
-            <motion.a
-              href="#contact"
-              className="mt-8 inline-flex h-[86px] w-[302px] items-center justify-center rounded-[4px] bg-nav-dark font-body text-2xl font-semibold text-white transition-colors duration-200 hover:bg-nav-dark/90 lg:mt-[102px]"
-              variants={fadeInUp}
-            >
-              Start Project
-            </motion.a>
-
             <motion.div
-              className="mt-12 grid w-full grid-cols-3 gap-x-4 sm:gap-x-8 lg:mt-[129px] lg:gap-x-12 xl:gap-x-16"
+              className="mt-12 grid w-full grid-cols-3 gap-x-4 sm:gap-x-8 lg:mt-16 lg:gap-x-12 xl:gap-x-16"
               variants={staggerContainer(0.1, 0)}
             >
               {stats.map((stat) => (
