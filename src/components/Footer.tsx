@@ -27,7 +27,7 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer id="support" className="relative bg-nav-dark text-white">
-      <div className="site-container pb-16 pt-[calc(2.5rem+28px)] lg:pb-20 lg:pt-[calc(3rem+30px)]">
+      <div className="site-container pb-16 pt-[calc(2.5rem+3.5rem)] sm:pb-16 sm:pt-[calc(2.5rem+1.75rem)] lg:pb-20 lg:pt-[calc(3rem+30px)]">
         <motion.div
           className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-16"
           variants={staggerContainer(0.1)}

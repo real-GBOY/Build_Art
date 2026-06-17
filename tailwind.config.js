@@ -11,7 +11,7 @@ export default {
         'nav-muted': '#545454',
       },
       maxWidth: {
-        site: '1920px',
+        site: '1600px',
       },
       fontFamily: {
         display: ['Playfair Display', 'serif'],

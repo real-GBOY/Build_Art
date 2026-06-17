@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import sectionImage from '../../assets/imgs/Image 1.jpg';
@@ -33,16 +33,46 @@ const testimonials = [
     location: 'London, UK',
     avatar: 'https://randomuser.me/api/portraits/men/75.jpg',
   },
+  {
+    quote:
+      'Our office redesign completely transformed how our team works. The space feels open, inspiring, and perfectly aligned with our brand identity.',
+    name: 'Emily Larson',
+    location: 'Chicago, USA',
+    avatar: 'https://randomuser.me/api/portraits/women/21.jpg',
+  },
+  {
+    quote:
+      'From color palettes to furniture selection, every detail felt intentional. The final result exceeded what we imagined for our family home.',
+    name: 'Michael Chen',
+    location: 'Vancouver, Canada',
+    avatar: 'https://randomuser.me/api/portraits/men/46.jpg',
+  },
+  {
+    quote:
+      'The team balanced aesthetics and practicality beautifully. Our kitchen and dining area now feel like the heart of the home.',
+    name: 'Priya Sharma',
+    location: 'Mumbai, India',
+    avatar: 'https://randomuser.me/api/portraits/women/57.jpg',
+  },
+  {
+    quote:
+      'We loved how clearly they communicated each stage of the project. The finished bedrooms are elegant, cozy, and truly personal.',
+    name: 'Daniel Ruiz',
+    location: 'Madrid, Spain',
+    avatar: 'https://randomuser.me/api/portraits/men/18.jpg',
+  },
 ];
-
-const slides = [...testimonials, testimonials[0]];
 
 export function TestimonialsSection() {
   const viewportRef = useRef<HTMLDivElement>(null);
+  const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const [gap, setGap] = useState(24);
+  const [visibleCount, setVisibleCount] = useState(2);
   const [isInstant, setIsInstant] = useState(false);
+
+  activeIndexRef.current = activeIndex;
 
   useLayoutEffect(() => {
     const updateSizes = () => {
@@ -55,10 +85,12 @@ export function TestimonialsSection() {
         (window.innerWidth >= 1024 ? 32 : 24);
 
       const isSingleCard = window.innerWidth < 640;
+      const count = isSingleCard ? 1 : 2;
       const width = isSingleCard
         ? viewport.offsetWidth
-        : (viewport.offsetWidth - measuredGap) / 2;
+        : (viewport.offsetWidth - measuredGap) / count;
 
+      setVisibleCount(count);
       setGap(measuredGap);
       setCardWidth(width);
     };
@@ -68,10 +100,13 @@ export function TestimonialsSection() {
     return () => window.removeEventListener('resize', updateSizes);
   }, []);
 
+  const slides = [...testimonials, ...testimonials.slice(0, visibleCount)];
   const stepSize = cardWidth + gap;
 
   const goToPrevious = () => {
-    if (activeIndex === 0) {
+    if (isInstant || !cardWidth) return;
+
+    if (activeIndexRef.current === 0) {
       setIsInstant(true);
       setActiveIndex(testimonials.length);
       requestAnimationFrame(() => {
@@ -87,16 +122,19 @@ export function TestimonialsSection() {
   };
 
   const goToNext = () => {
+    if (isInstant || !cardWidth) return;
+
     setActiveIndex((index) => {
       if (index >= testimonials.length - 1) {
         return testimonials.length;
       }
+
       return index + 1;
     });
   };
 
   const handleAnimationComplete = () => {
-    if (activeIndex === testimonials.length) {
+    if (activeIndexRef.current === testimonials.length) {
       setIsInstant(true);
       setActiveIndex(0);
       requestAnimationFrame(() => {
@@ -104,6 +142,10 @@ export function TestimonialsSection() {
       });
     }
   };
+
+  useEffect(() => {
+    setActiveIndex((index) => Math.min(index, Math.max(testimonials.length - visibleCount, 0)));
+  }, [visibleCount]);
 
   return (
     <section className="overflow-hidden bg-white">
@@ -126,7 +168,7 @@ export function TestimonialsSection() {
           </motion.div>
 
           <motion.div
-            className="relative z-50 mt-6 flex gap-4 lg:absolute lg:bottom-0 lg:left-0"
+            className="relative z-40 mt-6 flex gap-4 lg:absolute lg:bottom-0 lg:left-0"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
@@ -136,7 +178,8 @@ export function TestimonialsSection() {
               type="button"
               aria-label="Previous testimonial"
               onClick={goToPrevious}
-              className="pointer-events-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-[4px] border border-nav-dark/15 bg-white text-nav-dark transition-colors duration-200 hover:border-nav-dark hover:bg-nav-dark hover:text-white"
+              disabled={isInstant || !cardWidth}
+              className="pointer-events-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-[4px] border border-nav-dark/15 bg-white text-nav-dark transition-colors duration-200 hover:border-nav-dark hover:bg-nav-dark hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
             >
               <ChevronLeft className="h-5 w-5" strokeWidth={1.5} />
             </button>
@@ -144,7 +187,8 @@ export function TestimonialsSection() {
               type="button"
               aria-label="Next testimonial"
               onClick={goToNext}
-              className="pointer-events-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-[4px] border border-nav-dark/15 bg-white text-nav-dark transition-colors duration-200 hover:border-nav-dark hover:bg-nav-dark hover:text-white"
+              disabled={isInstant || !cardWidth}
+              className="pointer-events-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-[4px] border border-nav-dark/15 bg-white text-nav-dark transition-colors duration-200 hover:border-nav-dark hover:bg-nav-dark hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
             >
               <ChevronRight className="h-5 w-5" strokeWidth={1.5} />
             </button>
@@ -158,10 +202,10 @@ export function TestimonialsSection() {
             viewport={viewport}
           >
             <motion.h2
-              className="font-body text-[clamp(2rem,3.5vw,56px)] font-medium leading-[1.1] text-nav-dark lg:text-right"
+              className="text-start font-body text-[clamp(2rem,3.5vw,56px)] font-medium leading-[1.1] text-nav-dark lg:ml-[15%] lg:max-w-[85%]"
               variants={fadeInUp}
             >
-              What Our Customers Say About Us
+              What Our Customers Say
             </motion.h2>
 
             <motion.div
@@ -185,7 +229,7 @@ export function TestimonialsSection() {
                     key={`${testimonial.name}-${index}`}
                     style={{ width: cardWidth || undefined }}
                     className={`relative flex min-h-[380px] shrink-0 flex-col rounded-[2px] border-[6px] border-white bg-nav-dark p-10 shadow-[0_20px_45px_-25px_rgba(0,0,0,0.45)] sm:aspect-square sm:min-h-0 lg:p-12 xl:p-14 ${
-                      index === activeIndex ? 'z-30' : 'z-20'
+                      index >= activeIndex && index < activeIndex + visibleCount ? 'z-30' : 'z-20'
                     }`}
                   >
                     <span

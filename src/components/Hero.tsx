@@ -81,7 +81,7 @@ export function Hero() {
             </motion.a>
 
             <motion.div
-              className="mt-12 flex flex-wrap gap-x-16 gap-y-8 lg:mt-[129px] xl:gap-x-20 2xl:gap-x-28"
+              className="mt-12 grid w-full grid-cols-3 gap-x-4 sm:gap-x-8 lg:mt-[129px] lg:gap-x-12 xl:gap-x-16"
               variants={staggerContainer(0.1, 0)}
             >
               {stats.map((stat) => (
@@ -89,7 +89,7 @@ export function Hero() {
                   <p className="mb-[15px] font-body text-[clamp(2.5rem,5vw,70px)] font-normal leading-[1.755]">
                     <CountUp target={stat.value} />
                   </p>
-                  <p className="font-body text-lg font-normal leading-[1.755] lg:text-[22px]">
+                  <p className="whitespace-nowrap font-body text-lg font-normal leading-[1.755] lg:text-[22px]">
                     {stat.label}
                   </p>
                 </motion.div>

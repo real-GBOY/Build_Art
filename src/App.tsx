@@ -1,29 +1,22 @@
 /** @format */
 
-import { DreamSection } from "./components/DreamSection";
-import { Hero } from "./components/Hero";
-import { Navbar } from "./components/Navbar";
-import { Services } from "./components/Services";
-import { StepsSection } from "./components/StepsSection";
-import { Footer } from "./components/Footer";
-import { NewsletterSection } from "./components/NewsletterSection";
-import { TestimonialsSection } from "./components/TestimonialsSection";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ScrollToTop } from './components/ScrollToTop';
+import { FormPage } from './pages/FormPage';
+import { HomePage } from './pages/HomePage';
 
 function App() {
-	return (
-		<div className='font-body antialiased'>
-			<Navbar />
-			<main className='pt-20 lg:pt-[88px]'>
-				<Hero />
-				<Services />
-				<DreamSection />
-				<StepsSection />
-				<TestimonialsSection />
-				<NewsletterSection />
-			</main>
-			<Footer />
-		</div>
-	);
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="font-body antialiased">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/form" element={<FormPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;
