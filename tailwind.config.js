@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: '#faf8f5',
-        page: '#fffdf9',
+        cream: '#f0e8d9',
+        page: '#f0e8d9',
         charcoal: '#2c2c2c',
         gold: '#c9a962',
         'nav-dark': '#424d26',
@@ -15,8 +15,7 @@ export default {
         site: '1600px',
       },
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
-        body: ['Inter', 'sans-serif'],
+        body: ['Cairo', 'sans-serif'],
         cairo: ['Cairo', 'sans-serif'],
       },
     },

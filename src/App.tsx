@@ -9,7 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="font-body antialiased">
+      <div className="bg-page font-body antialiased">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/form" element={<FormPage />} />

@@ -36,9 +36,9 @@ export function FormPage() {
   };
 
   return (
-    <div className="font-body antialiased">
+    <div className="bg-page font-body antialiased">
       <Navbar />
-      <main className="bg-cream pt-20 lg:pt-[88px]">
+      <main className="bg-page pt-20 lg:pt-[88px]">
         <div className="site-container py-16 lg:py-24">
           <motion.div
             className="mx-auto max-w-2xl"
@@ -73,7 +73,7 @@ export function FormPage() {
 
             <motion.form
               onSubmit={handleSubmit}
-              className="mt-10 space-y-6 rounded-[4px] bg-white p-8 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.15)] lg:mt-12 lg:p-10"
+              className="mt-10 space-y-6 rounded-[4px] border border-nav-dark/10 bg-page p-8 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.15)] lg:mt-12 lg:p-10"
               variants={fadeInUp}
             >
               <div>
@@ -86,7 +86,7 @@ export function FormPage() {
                   required
                   value={formData.name}
                   onChange={(event) => setFormData({ ...formData, name: event.target.value })}
-                  className="h-14 w-full rounded-[4px] border border-nav-dark/10 bg-white px-5 font-body text-base font-medium text-nav-dark placeholder:text-nav-muted/70 focus:border-nav-dark focus:outline-none"
+                  className="h-14 w-full rounded-[4px] border border-nav-dark/10 bg-page px-5 font-body text-base font-medium text-nav-dark placeholder:text-nav-muted/70 focus:border-nav-dark focus:outline-none"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -101,7 +101,7 @@ export function FormPage() {
                   required
                   value={formData.email}
                   onChange={(event) => setFormData({ ...formData, email: event.target.value })}
-                  className="h-14 w-full rounded-[4px] border border-nav-dark/10 bg-white px-5 font-body text-base font-medium text-nav-dark placeholder:text-nav-muted/70 focus:border-nav-dark focus:outline-none"
+                  className="h-14 w-full rounded-[4px] border border-nav-dark/10 bg-page px-5 font-body text-base font-medium text-nav-dark placeholder:text-nav-muted/70 focus:border-nav-dark focus:outline-none"
                   placeholder="Enter your email address"
                 />
               </div>
@@ -115,7 +115,7 @@ export function FormPage() {
                   type="tel"
                   value={formData.phone}
                   onChange={(event) => setFormData({ ...formData, phone: event.target.value })}
-                  className="h-14 w-full rounded-[4px] border border-nav-dark/10 bg-white px-5 font-body text-base font-medium text-nav-dark placeholder:text-nav-muted/70 focus:border-nav-dark focus:outline-none"
+                  className="h-14 w-full rounded-[4px] border border-nav-dark/10 bg-page px-5 font-body text-base font-medium text-nav-dark placeholder:text-nav-muted/70 focus:border-nav-dark focus:outline-none"
                   placeholder="Enter your phone number"
                 />
               </div>
@@ -132,7 +132,7 @@ export function FormPage() {
                   required
                   value={formData.projectType}
                   onChange={(event) => setFormData({ ...formData, projectType: event.target.value })}
-                  className={`h-14 w-full rounded-[4px] border border-nav-dark/10 bg-white px-5 font-body text-base font-medium focus:border-nav-dark focus:outline-none ${
+                  className={`h-14 w-full rounded-[4px] border border-nav-dark/10 bg-page px-5 font-body text-base font-medium focus:border-nav-dark focus:outline-none ${
                     formData.projectType ? 'text-nav-dark' : 'text-nav-muted'
                   }`}
                 >
@@ -157,7 +157,7 @@ export function FormPage() {
                   rows={5}
                   value={formData.message}
                   onChange={(event) => setFormData({ ...formData, message: event.target.value })}
-                  className="w-full resize-none rounded-[4px] border border-nav-dark/10 bg-white px-5 py-4 font-body text-base font-medium text-nav-dark placeholder:text-nav-muted/70 focus:border-nav-dark focus:outline-none"
+                  className="w-full resize-none rounded-[4px] border border-nav-dark/10 bg-page px-5 py-4 font-body text-base font-medium text-nav-dark placeholder:text-nav-muted/70 focus:border-nav-dark focus:outline-none"
                   placeholder="Tell us about your space, style preferences, and timeline"
                 />
               </div>

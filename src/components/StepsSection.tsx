@@ -38,7 +38,7 @@ const steps: {
 
 export function StepsSection() {
   return (
-    <section className="bg-white">
+    <section className="bg-page">
       <div className="site-container py-16 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-stretch lg:gap-16 xl:gap-24">
           <div>

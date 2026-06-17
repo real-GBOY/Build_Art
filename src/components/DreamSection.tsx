@@ -21,7 +21,7 @@ export function DreamSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-white">
+    <section className="bg-page">
       <div className="site-container py-16 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-stretch lg:gap-16 xl:gap-24">
           <motion.div

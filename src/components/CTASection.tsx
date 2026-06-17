@@ -31,7 +31,7 @@ export function CTASection() {
           <motion.div className="mt-10 lg:mt-12" variants={fadeInUp}>
             <Link
               to="/form"
-              className="inline-flex h-[60px] min-w-[220px] items-center justify-center rounded-[4px] bg-white px-10 font-body text-xl font-semibold text-nav-dark transition-colors duration-200 hover:bg-white/90 lg:h-[68px] lg:min-w-[260px] lg:text-2xl"
+              className="inline-flex h-[60px] min-w-[220px] items-center justify-center rounded-[4px] bg-page px-10 font-body text-xl font-semibold text-nav-dark transition-colors duration-200 hover:bg-page/90 lg:h-[68px] lg:min-w-[260px] lg:text-2xl"
             >
               Start Your Project
             </Link>

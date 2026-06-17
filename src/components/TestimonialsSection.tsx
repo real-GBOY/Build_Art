@@ -148,7 +148,7 @@ export function TestimonialsSection() {
   }, [visibleCount]);
 
   return (
-    <section className="overflow-hidden bg-white">
+    <section className="overflow-hidden bg-page">
       <div className="site-container py-16 lg:py-24">
         <div className="relative">
           <motion.div
@@ -179,7 +179,7 @@ export function TestimonialsSection() {
               aria-label="Previous testimonial"
               onClick={goToPrevious}
               disabled={isInstant || !cardWidth}
-              className="pointer-events-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-[4px] border border-nav-dark/15 bg-white text-nav-dark transition-colors duration-200 hover:border-nav-dark hover:bg-nav-dark hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+              className="pointer-events-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-[4px] border border-nav-dark/15 bg-page text-nav-dark transition-colors duration-200 hover:border-nav-dark hover:bg-nav-dark hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
             >
               <ChevronLeft className="h-5 w-5" strokeWidth={1.5} />
             </button>
@@ -188,7 +188,7 @@ export function TestimonialsSection() {
               aria-label="Next testimonial"
               onClick={goToNext}
               disabled={isInstant || !cardWidth}
-              className="pointer-events-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-[4px] border border-nav-dark/15 bg-white text-nav-dark transition-colors duration-200 hover:border-nav-dark hover:bg-nav-dark hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+              className="pointer-events-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-[4px] border border-nav-dark/15 bg-page text-nav-dark transition-colors duration-200 hover:border-nav-dark hover:bg-nav-dark hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
             >
               <ChevronRight className="h-5 w-5" strokeWidth={1.5} />
             </button>
@@ -228,7 +228,7 @@ export function TestimonialsSection() {
                   <article
                     key={`${testimonial.name}-${index}`}
                     style={{ width: cardWidth || undefined }}
-                    className={`relative flex min-h-[380px] shrink-0 flex-col rounded-[2px] border-[6px] border-white bg-nav-dark p-10 shadow-[0_20px_45px_-25px_rgba(0,0,0,0.45)] sm:aspect-square sm:min-h-0 lg:p-12 xl:p-14 ${
+                    className={`relative flex min-h-[380px] shrink-0 flex-col rounded-[2px] border-[6px] border-page bg-nav-dark p-10 shadow-[0_20px_45px_-25px_rgba(0,0,0,0.45)] sm:aspect-square sm:min-h-0 lg:p-12 xl:p-14 ${
                       index >= activeIndex && index < activeIndex + visibleCount ? 'z-30' : 'z-20'
                     }`}
                   >

@@ -11,7 +11,7 @@ export function NewsletterSection() {
   };
 
   return (
-    <section id="contact" className="relative bg-cream">
+    <section id="contact" className="relative bg-page">
       <div className="site-container py-16 pb-10 lg:py-24 lg:pb-12">
         <motion.div
           className="mx-auto max-w-3xl text-center"
@@ -47,7 +47,7 @@ export function NewsletterSection() {
           <div className="site-container">
             <form
               onSubmit={handleSubmit}
-              className="mx-auto flex max-w-2xl flex-col overflow-hidden rounded-[4px] bg-white shadow-[0_12px_40px_-12px_rgba(0,0,0,0.25)] sm:flex-row sm:items-stretch"
+              className="mx-auto flex max-w-2xl flex-col overflow-hidden rounded-[4px] border border-nav-dark/10 bg-page shadow-[0_12px_40px_-12px_rgba(0,0,0,0.25)] sm:flex-row sm:items-stretch"
             >
               <input
                 type="email"
@@ -56,7 +56,7 @@ export function NewsletterSection() {
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="Enter your email address"
                 aria-label="Email address"
-                className="h-14 flex-1 border-0 bg-white px-5 font-body text-base font-medium text-nav-dark placeholder:text-nav-muted/70 focus:outline-none lg:h-[60px] lg:px-6 lg:text-lg"
+                className="h-14 flex-1 border-0 border-nav-dark/10 bg-page px-5 font-body text-base font-medium text-nav-dark placeholder:text-nav-muted/70 focus:outline-none sm:border-r lg:h-[60px] lg:px-6 lg:text-lg"
               />
               <button
                 type="submit"

@@ -30,7 +30,7 @@ const services: {
 
 export function Services() {
   return (
-    <section id="services" className="bg-white">
+    <section id="services" className="bg-page">
       <div className="site-container py-16 lg:py-24">
         <motion.h2
           className="mb-12 font-body text-3xl font-medium text-nav-dark lg:mb-20 lg:text-[40px]"

@@ -47,7 +47,7 @@ function CountUp({ target, duration = 2000 }: { target: number; duration?: numbe
 
 export function Hero() {
   return (
-    <section id="home" className="overflow-hidden bg-page font-cairo">
+    <section id="home" className="overflow-hidden bg-page">
       <div className="site-container pb-16 pt-4 lg:pb-20 lg:pt-6">
         <div className="relative lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-start lg:gap-10 xl:gap-16 2xl:gap-24">
           <motion.div
