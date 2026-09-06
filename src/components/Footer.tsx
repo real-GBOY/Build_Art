@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import footerLogo from '../assets/logo-footer.png';
+import { WhatsappIcon } from '../icons/whatsapp';
 import { fadeInUp, staggerContainer, viewport } from '../lib/motion';
+
+const WHATSAPP_NUMBER = '201039529116';
 
 const serviceLinks = [
   { label: 'Lighting Design', href: '/#services' },
@@ -19,10 +22,16 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { label: 'Facebook', href: '#', icon: Facebook },
-  { label: 'Twitter', href: '#', icon: Twitter },
-  { label: 'Instagram', href: '#', icon: Instagram },
-  { label: 'LinkedIn', href: '#', icon: Linkedin },
+  {
+    label: 'WhatsApp',
+    href: `https://wa.me/${WHATSAPP_NUMBER}`,
+    icon: WhatsappIcon,
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/build.art.interior?igsi=cTQ2OHZpcXp1dHBu&utm_source=qr',
+    icon: Instagram,
+  },
 ];
 
 export function Footer() {
@@ -56,6 +65,8 @@ export function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
+                  target={social.href.startsWith('http') ? '_blank' : undefined}
+                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors duration-200 hover:border-white hover:bg-white/10"
                 >
                   <social.icon className="h-4 w-4" strokeWidth={1.5} />
@@ -105,18 +116,24 @@ export function Footer() {
               Contact Us
             </h3>
             <ul className="mt-6 space-y-4 font-body text-sm font-medium leading-[160%] text-white/70 lg:text-base">
-              <li>123 Design Avenue, Suite 400, New York, NY 10001</li>
               <li>
-                <a href="tel:+12345678900" className="transition-colors duration-200 hover:text-white">
-                  +1 (234) 567-8900
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors duration-200 hover:text-white"
+                >
+                  +20 10 3952 9116
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:hello@studioelegance.com"
+                  href="https://www.instagram.com/build.art.interior?igsi=cTQ2OHZpcXp1dHBu&utm_source=qr"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="transition-colors duration-200 hover:text-white"
                 >
-                  hello@studioelegance.com
+                  @build.art.interior
                 </a>
               </li>
             </ul>
@@ -124,7 +141,29 @@ export function Footer() {
         </motion.div>
 
         <motion.div
-          className="mt-12 border-t border-white/10 pt-8 lg:mt-16"
+          className="mt-12 overflow-hidden rounded-[4px] border border-white/10 lg:mt-16"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
+          <div className="aspect-[16/6] w-full">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3435.8814155891146!2d31.018781675573422!3d30.55265427467166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzDCsDMzJzA5LjYiTiAzMcKwMDEnMTYuOSJF!5e0!3m2!1sen!2seg!4v1788735887389!5m2!1sen!2seg"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="Build Art location"
+              className="h-full w-full"
+            />
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="mt-8 border-t border-white/10 pt-8"
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
