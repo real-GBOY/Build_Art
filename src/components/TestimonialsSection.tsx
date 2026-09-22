@@ -11,62 +11,67 @@ import {
 	viewport,
 } from "../lib/motion";
 
+const avatar = (name: string) =>
+	`https://ui-avatars.com/api/?name=${encodeURIComponent(
+		name,
+	)}&background=424d26&color=ffffff&size=128&bold=true&font-size=0.38`;
+
 const testimonials = [
 	{
 		quote:
-			"Working with your design team was an absolute pleasure. The attention to detail and creativity exceeded my expectations. Thank you for making my home beautiful!",
-		name: "Sophie Carter",
-		location: "New York, USA",
-		avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+			"Working with your design team was an absolute pleasure. Every detail in our new apartment was handled with real care and craftsmanship.",
+		name: "Ahmed El-Sayed",
+		location: "Cairo, Egypt",
+		avatar: avatar("Ahmed El-Sayed"),
 	},
 	{
 		quote:
-			"Exceptional service! From the initial consultation to the final reveal, your team demonstrated professionalism and a keen eye for design. Highly recommend!",
-		name: "James Bennett",
-		location: "Toronto, Canada",
-		avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+			"From the first meeting to the final handover, the team understood exactly what our family needed. Our home finally feels like us.",
+		name: "Mona Abdelrahman",
+		location: "Giza, Egypt",
+		avatar: avatar("Mona Abdelrahman"),
 	},
 	{
 		quote:
-			"They took the time to understand our vision and translated it into a design that perfectly reflects our style. The result is a beautiful, functional space.",
-		name: "Annette Black",
-		location: "California, USA",
-		avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+			"The lighting and finishing work exceeded what we imagined. Guests always ask who designed our villa.",
+		name: "Youssef Hassan",
+		location: "Alexandria, Egypt",
+		avatar: avatar("Youssef Hassan"),
 	},
 	{
 		quote:
-			"Throughout the process, they remained responsive, professional, and committed to delivering exceptional results. We are thrilled with the final outcome.",
-		name: "Jacob Jones",
-		location: "London, UK",
-		avatar: "https://randomuser.me/api/portraits/men/75.jpg",
+			"They balanced modern style with comfort perfectly. Our living room is now the favorite spot in the house.",
+		name: "Nourhan Mostafa",
+		location: "Mansoura, Egypt",
+		avatar: avatar("Nourhan Mostafa"),
 	},
 	{
 		quote:
-			"Our office redesign completely transformed how our team works. The space feels open, inspiring, and perfectly aligned with our brand identity.",
-		name: "Emily Larson",
-		location: "Chicago, USA",
-		avatar: "https://randomuser.me/api/portraits/women/21.jpg",
+			"Professional from start to finish, and always quick to respond. I would recommend Build Art to anyone renovating in Menoufia.",
+		name: "Khaled Ibrahim",
+		location: "Shebin El-Kom, Egypt",
+		avatar: avatar("Khaled Ibrahim"),
 	},
 	{
 		quote:
-			"From color palettes to furniture selection, every detail felt intentional. The final result exceeded what we imagined for our family home.",
-		name: "Michael Chen",
-		location: "Vancouver, Canada",
-		avatar: "https://randomuser.me/api/portraits/men/46.jpg",
+			"Our office redesign completely changed how the team works. It feels open, calm, and truly reflects our brand.",
+		name: "Rania Farouk",
+		location: "New Cairo, Egypt",
+		avatar: avatar("Rania Farouk"),
 	},
 	{
 		quote:
-			"The team balanced aesthetics and practicality beautifully. Our kitchen and dining area now feel like the heart of the home.",
-		name: "Priya Sharma",
-		location: "Mumbai, India",
-		avatar: "https://randomuser.me/api/portraits/women/57.jpg",
+			"Even managing the project remotely from Dubai, communication was smooth and transparent the whole way through.",
+		name: "Omar Al-Farsi",
+		location: "Dubai, UAE",
+		avatar: avatar("Omar Al-Farsi"),
 	},
 	{
 		quote:
-			"We loved how clearly they communicated each stage of the project. The finished bedrooms are elegant, cozy, and truly personal.",
-		name: "Daniel Ruiz",
-		location: "Madrid, Spain",
-		avatar: "https://randomuser.me/api/portraits/men/18.jpg",
+			"The attention to detail in our Riyadh apartment was outstanding. Every corner feels intentional and elegant.",
+		name: "Sara Al-Otaibi",
+		location: "Riyadh, Saudi Arabia",
+		avatar: avatar("Sara Al-Otaibi"),
 	},
 ];
 
