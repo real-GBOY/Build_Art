@@ -14,7 +14,7 @@ import {
 const avatar = (name: string) =>
 	`https://ui-avatars.com/api/?name=${encodeURIComponent(
 		name,
-	)}&background=424d26&color=ffffff&size=128&bold=true&font-size=0.38`;
+	)}&background=c9a962&color=424d26&size=128&bold=true&font-size=0.38`;
 
 const testimonials = [
 	{
