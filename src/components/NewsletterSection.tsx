@@ -2,12 +2,39 @@ import { FormEvent, useState } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp, scaleIn, staggerContainer, viewport } from '../lib/motion';
 
+const WEB3FORMS_ACCESS_KEY = '8d83d96e-fb9f-4119-9341-25be171c84ac';
+
 export function NewsletterSection() {
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setEmail('');
+    setStatus('submitting');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: 'New Newsletter Signup - Build Art',
+          from_name: 'Build Art Website',
+          email,
+          message: `New newsletter signup: ${email}`,
+        }),
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setEmail('');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -60,11 +87,22 @@ export function NewsletterSection() {
               />
               <button
                 type="submit"
-                className="h-14 shrink-0 rounded-none bg-nav-dark px-10 font-body text-lg font-semibold text-white transition-colors duration-200 hover:bg-nav-dark/90 lg:h-[60px] lg:min-w-[176px] lg:text-xl"
+                disabled={status === 'submitting'}
+                className="h-14 shrink-0 rounded-none bg-nav-dark px-10 font-body text-lg font-semibold text-white transition-colors duration-200 hover:bg-nav-dark/90 disabled:cursor-not-allowed disabled:opacity-70 lg:h-[60px] lg:min-w-[176px] lg:text-xl"
               >
-                Subscribe
+                {status === 'submitting' ? 'Sending...' : 'Subscribe'}
               </button>
             </form>
+            {status === 'success' && (
+              <p className="mt-4 text-center font-body text-sm font-medium text-nav-dark">
+                Thank you for subscribing!
+              </p>
+            )}
+            {status === 'error' && (
+              <p className="mt-4 text-center font-body text-sm font-medium text-red-600">
+                Something went wrong. Please try again.
+              </p>
+            )}
           </div>
         </motion.div>
       </div>

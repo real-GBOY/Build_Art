@@ -15,6 +15,8 @@ const projectTypes = [
   'Other',
 ];
 
+const WEB3FORMS_ACCESS_KEY = '8d83d96e-fb9f-4119-9341-25be171c84ac';
+
 export function FormPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -23,16 +25,38 @@ export function FormPage() {
     projectType: '',
     message: '',
   });
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      projectType: '',
-      message: '',
-    });
+    setStatus('submitting');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: 'New Project Request - Build Art',
+          from_name: formData.name,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          project_type: formData.projectType,
+          message: formData.message,
+        }),
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', projectType: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -164,10 +188,22 @@ export function FormPage() {
 
               <button
                 type="submit"
-                className="flex h-[60px] w-full items-center justify-center rounded-[4px] bg-nav-dark font-body text-xl font-semibold text-white transition-colors duration-200 hover:bg-nav-dark/90"
+                disabled={status === 'submitting'}
+                className="flex h-[60px] w-full items-center justify-center rounded-[4px] bg-nav-dark font-body text-xl font-semibold text-white transition-colors duration-200 hover:bg-nav-dark/90 disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Submit Project Request
+                {status === 'submitting' ? 'Sending...' : 'Submit Project Request'}
               </button>
+
+              {status === 'success' && (
+                <p className="text-center font-body text-base font-medium text-nav-dark">
+                  Thank you! Your request has been sent. We will get back to you soon.
+                </p>
+              )}
+              {status === 'error' && (
+                <p className="text-center font-body text-base font-medium text-red-600">
+                  Something went wrong. Please try again or contact us on WhatsApp.
+                </p>
+              )}
             </motion.form>
           </motion.div>
         </div>
